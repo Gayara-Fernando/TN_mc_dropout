@@ -1,0 +1,13 @@
+#!/bin/bash
+#SBATCH --job-name=stack_train_data
+#SBATCH --ntasks=16
+#SBATCH --mem=150g
+#SBATCH --time=5:00:00
+#SBATCH --error=stack_train_data.%J.err
+#SBATCH --output=stack_train_data.%J.out
+
+module purge
+module load anaconda
+conda activate $COMMON/tf_with_py38_gpu_29
+
+python Stacking_train_data_preprocessing.py 
